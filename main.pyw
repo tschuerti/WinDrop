@@ -5,7 +5,7 @@ import time
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'C:/Users/Florian Czyrt/Downloads'
+UPLOAD_FOLDER = 'C:/Users/{USER}/Downloads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/data', methods=['POST'])
@@ -18,12 +18,12 @@ def data():
     
     if "text" in data:
         #open text editor temporarily to write url into file and open it and delete it afterwards
-        f = open("C:/Users/Florian Czyrt/Desktop/transfer_text.txt", "w")
+        f = open("C:/Users/{USER}/Desktop/transfer_text.txt", "w")
         f.write(data['text'])
         f.close()
-        os.startfile("C:/Users/Florian Czyrt/Desktop/transfer_text.txt")
+        os.startfile("C:/Users/{USER}/Desktop/transfer_text.txt")
         time.sleep(1)
-        os.remove("C:/Users/Florian Czyrt/Desktop/transfer_text.txt")
+        os.remove("C:/Users/{USER}/Desktop/transfer_text.txt")
         return 'Success'
 
 @app.route('/media', methods=['POST'])
